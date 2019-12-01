@@ -1,0 +1,85 @@
+# Divine bundle '*primer-gpg*'
+:author: Grove Pyree
+:email: grayarea@protonmail.ch
+:revdate: 2019.12.01
+:revremark: Initial commit
+:doctype: article
+// Visual
+:toc:
+// Subs:
+:hs: #
+:dhs: ##
+:us: _
+:dus: __
+:as: *
+:das: **
+
+++++
+<p align="center">
+<em>A deployment bundle for <a href="https://github.com/divine-dotfiles/divine-dotfiles">Divine.dotfiles</a></em>
+</p>
+++++
+
+## Description
+
+Divine bundle '*primer-gpg*' automates adherence to best security practices in regards to https://www.gnupg.org[GnuPG].
+
+[WARNING]
+After attaching this deployment, but before installing it, you must provide a bit of configuration data.
+Look for config file in `~/.grail/assets/primer-gpg`.
+
+## Installation/removal
+
+Install via any Terminal.
+
+### Don't have Divine.dotfiles installed?
+
+*Install both framework & this deployment* in one fell swoop (it's fully removable):
+
+[source,bash]
+----
+bash -c "TMP=\$(mktemp); URL=https:\
+//raw.github.com/divine-dotfiles/divine-dotfiles/master/lib/install/install.sh\
+; if curl --version &>/dev/null; then curl -fsSL \$URL >\$TMP; elif wget --ver\
+sion &>/dev/null; then wget -qO \$TMP \$URL; else printf >&2 \"\n==> Error: fa\
+iled to detect neither curl nor wget\n\"; rm -f \$TMP; exit 1; fi || { printf \
+>&2 \"\n==> Error: failed to download installation script\n\"; rm -f \$TMP; ex\
+it 2; }; chmod +x \$TMP && \$TMP \"\$@\"; RC=\$?; rm -f \$TMP; ((RC)) && exit \
+3 || exit 0" bash --yes \
+&& ~/.divine/intervene.sh attach primer-gpg --yes \
+&& ~/.divine/intervene.sh install --yes
+----
+
+Afterward, if you don't like it, here is the '**undo**' command (removes/restores _everything_):
+
+[source,bash]
+----
+~/.divine/intervene.sh remove --yes \
+&& ~/.divine/intervene.sh detach primer-gpg --yes \
+&& bash -c "TMP=\$(mktemp); URL=https://raw.\
+github.com/divine-dotfiles/divine-dotfiles/master/lib/uninstall/uninstall.sh; \
+if curl --version &>/dev/null; then curl -fsSL \$URL >\$TMP; elif wget --versi\
+on &>/dev/null; then wget -qO \$TMP \$URL; else printf >&2 \"\n==> Error: fail\
+ed to detect neither curl nor wget\n\"; rm -f \$TMP; exit 1; fi || { printf >&\
+2 \"\n==> Error: failed to download uninstallation script\n\"; rm -f \$TMP; ex\
+it 2; }; chmod +x \$TMP && \$TMP \"\$@\"; RC=\$?; rm -f \$TMP; ((RC)) && exit \
+3 || exit 0" bash --yes
+----
+
+### Already a Divine.dotfiles user?
+
+Attach this deployment to your copy of Divine.dotfiles as such:
+
+[source,bash]
+----
+di attach primer-gpg --yes
+----
+
+Then install as usual.
+
+If ever removing this deployment, make sure you uninstall it first, and then:
+
+[source,bash]
+----
+di detach primer-gpg --yes
+----

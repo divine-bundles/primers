@@ -1,0 +1,45 @@
+= Deployment bundle `primers`
+:author: Grove Pyree
+:email: grayarea@protonmail.ch
+:revdate: 2019.12.01
+:revremark: Initial commit
+:doctype: article
+// Visual
+:toc: macro
+// Subs:
+:hs: #
+:dhs: ##
+:us: _
+:dus: __
+:as: *
+:das: **
+:lsb: [
+:rsb: ]
+:url_dd: https://github.com/divine-dotfiles/divine-dotfiles
+
+++++
+<p align="center">
+<em>A deployment bundle for <a href="https://github.com/divine-dotfiles/divine-dotfiles">Divine.dotfiles</a></em>
+</p>
+++++
+
+The deployment bundle `primers` is under development.
+
+// TODO
+
+[[bundle-main]]
+== Description
+
+// TODO
+
+[[inun-main]]
+== Installing and uninstalling the bundle
+
+// TODO
+
+[[dpls-main]]
+== Bundled deployments
+
+include::primer-gpg/README.adoc[leveloffset=2]
+
+include::primer-ssh/README.adoc[leveloffset=2]
