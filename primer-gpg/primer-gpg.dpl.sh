@@ -1,8 +1,8 @@
 #:title:        Divine deployment: primer-gpg
 #:author:       Grove Pyree
 #:email:        grayarea@protonmail.ch
-#:revdate:      2019.12.01
-#:revremark:    Initial commit
+#:revdate:      2020.03.11
+#:revremark:    Remove all calls to dtrim
 #:created_at:   2019.06.30
 
 D_DPL_NAME='primer-gpg'
@@ -652,7 +652,7 @@ d_subtask__unpack_can_file_to_ramdisk()
 
   # Warn user of next passphrase prompt
   # (Optionally take description from caller)
-  local prompt_desc="$( dtrim -- "$1" )"; shift
+  local prompt_desc="$1"; shift
   [ -n "$prompt_desc" ] || prompt_desc='can file passphrase (current)'
   next_up "$prompt_desc" || return $?
 
@@ -741,7 +741,7 @@ d_subtask__change_pass_in_temp()
 
   # Warn user of next passphrase prompt
   # (Optionally take description from caller)
-  local prompt_desc="$( dtrim -- "$1" )"; shift
+  local prompt_desc="$1"; shift
   [ -n "$prompt_desc" ] || prompt_desc='secret key passphrase (current -> new)'
   next_up "$prompt_desc" || return $?
 
@@ -975,7 +975,7 @@ d_subtask__remove_all_keypairs_from_primary()
 
     # Warn user of next prompt
     # (Optionally take description from caller)
-    local prompt_desc="$( dtrim -- "$1" )"; shift
+    local prompt_desc="$1"; shift
     [ -n "$prompt_desc" ] || prompt_desc='secret key removal'
     next_up "$prompt_desc" || return $?
 
@@ -1199,7 +1199,7 @@ d_subtask__export_from_temp__sec()
 
   # Warn user of next passphrase prompt
   # (Optionally take description from caller)
-  local prompt_desc="$( dtrim -- "$1" )"; shift
+  local prompt_desc="$1"; shift
   [ -n "$prompt_desc" ] || prompt_desc='secret key passphrase (current)'
   next_up "$prompt_desc" || return $?
   
@@ -1254,7 +1254,7 @@ d_subtask__export_from_temp__ssb()
 
   # Warn user of next passphrase prompt
   # (Optionally take description from caller)
-  local prompt_desc="$( dtrim -- "$1" )"; shift
+  local prompt_desc="$1"; shift
   [ -n "$prompt_desc" ] || prompt_desc='secret key passphrase (current)'
   next_up "$prompt_desc" || return $?
   
@@ -1357,7 +1357,7 @@ d_subtask__export_from_primary__sec()
 
   # Warn user of next passphrase prompt
   # (Optionally take description from caller)
-  local prompt_desc="$( dtrim -- "$1" )"; shift
+  local prompt_desc="$1"; shift
   [ -n "$prompt_desc" ] || prompt_desc='secret key passphrase (current)'
   next_up "$prompt_desc" || return $?
   
@@ -1412,7 +1412,7 @@ d_subtask__export_from_primary__ssb()
 
   # Warn user of next passphrase prompt
   # (Optionally take description from caller)
-  local prompt_desc="$( dtrim -- "$1" )"; shift
+  local prompt_desc="$1"; shift
   [ -n "$prompt_desc" ] || prompt_desc='secret key passphrase (current)'
   next_up "$prompt_desc" || return $?
   
@@ -1495,7 +1495,7 @@ d_subtask__import_to_temp__sec()
 
   # Warn user of next passphrase prompt
   # (Optionally take description from caller)
-  local prompt_desc="$( dtrim -- "$1" )"; shift
+  local prompt_desc="$1"; shift
   [ -n "$prompt_desc" ] || prompt_desc='secret key passphrase (current)'
   next_up "$prompt_desc" || return $?
 
@@ -1598,7 +1598,7 @@ d_subtask__import_to_primary__sec()
 
   # Warn user of next passphrase prompt
   # (Optionally take description from caller)
-  local prompt_desc="$( dtrim -- "$1" )"; shift
+  local prompt_desc="$1"; shift
   [ -n "$prompt_desc" ] || prompt_desc='secret key passphrase (current)'
   next_up "$prompt_desc" || return $?
 
@@ -1668,7 +1668,7 @@ d_subtask__create_fresh_keypair_in_temp()
 
   # Warn user of next prompt
   # (Optionally take description from caller)
-  local prompt_desc="$( dtrim -- "$1" )"; shift
+  local prompt_desc="$1"; shift
   [ -n "$prompt_desc" ] || prompt_desc='gpg --full-generate-key'
   next_up "$prompt_desc" || return $?
 
@@ -1721,7 +1721,7 @@ d_subtask__tinker_with_keypairs_in_temp()
 
   # Warn user of next prompt
   # (Optionally take description from caller)
-  local prompt_desc="$( dtrim -- "$1" )"; shift
+  local prompt_desc="$1"; shift
   [ -n "$prompt_desc" ] || prompt_desc='gpg --edit-key'
   next_up "$prompt_desc" || return $?
 
@@ -1862,7 +1862,7 @@ d_subtask__pack_can_file_from_ramdisk()
 
   # Warn user of next passphrase prompt
   # (Optionally take description from caller)
-  local prompt_desc="$( dtrim -- "$1" )"; shift
+  local prompt_desc="$1"; shift
   [ -n "$prompt_desc" ] || prompt_desc='can file passphrase (new)'
   next_up "$prompt_desc" || return $?
 
@@ -1947,7 +1947,7 @@ d_subtask__destroy_ramdisk()
 next_up()
 {
   # Extract message from arguments and trim it
-  local msg="$( dtrim -- "$*" )"
+  local msg="$*"
 
   # Early exit for empty message
   [ -n "$msg" ] || return 1
