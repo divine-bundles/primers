@@ -2,11 +2,11 @@
 #:author:       Grove Pyree
 #:email:        grayarea@protonmail.ch
 #:revdate:      2020.03.16
-#:revremark:    Remove dtrim from ssh primer
+#:revremark:    Update SSH primer description
 #:created_at:   2019.06.30
 
 D_DPL_NAME='primer-ssh'
-D_DPL_DESC='[Install-only] Storage and retrieval of ssh keys to/from encrypted can'
+D_DPL_DESC='[Install-only] Collection of SSH tasks for initial set-up'
 D_DPL_PRIORITY=5000
 D_DPL_FLAGS=!
 D_DPL_WARNING=
