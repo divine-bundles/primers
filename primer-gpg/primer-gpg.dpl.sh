@@ -1,8 +1,8 @@
 #:title:        Divine deployment: primer-gpg
 #:author:       Grove Pyree
 #:email:        grayarea@protonmail.ch
-#:revdate:      2020.03.11
-#:revremark:    Remove all calls to dtrim
+#:revdate:      2020.03.16
+#:revremark:    Trim whitespace from RAM disk device handle
 #:created_at:   2019.06.30
 
 D_DPL_NAME='primer-gpg'
@@ -563,6 +563,7 @@ d_subtask__create_ramdisk()
           'Failed to attach drive using hdiutil'
         return 1
       }
+      read -r D_RAMDISK_DEV <<<"$D_RAMDISK_DEV"
 
       # Erase that volume, format it to HFS+, and mount
       diskutil erasevolume hfs+ $ramdisk_name $D_RAMDISK_DEV &>/dev/null || {
