@@ -1,8 +1,8 @@
 #:title:        Divine deployment: primer-ssh
 #:author:       Grove Pyree
 #:email:        grayarea@protonmail.ch
-#:revdate:      2019.12.01
-#:revremark:    Initial commit
+#:revdate:      2020.03.16
+#:revremark:    Remove dtrim from ssh primer
 #:created_at:   2019.06.30
 
 D_DPL_NAME='primer-ssh'
@@ -338,7 +338,7 @@ d_subtask__erase_ssh_dir()
 
   # Warn user of next passphrase prompt
   # (Optionally take description from caller)
-  local prompt_desc="$( dtrim -- "$1" )"; shift
+  local prompt_desc="$1"; shift
   [ -n "$prompt_desc" ] || prompt_desc='erasing of SSH dir'
   next_up "$prompt_desc" || return $?
 
@@ -419,7 +419,7 @@ d_subtask__extract_from_can()
 
   # Warn user of next passphrase prompt
   # (Optionally take description from caller)
-  local prompt_desc="$( dtrim -- "$1" )"; shift
+  local prompt_desc="$1"; shift
   [ -n "$prompt_desc" ] || prompt_desc='can file passphrase (current)'
   next_up "$prompt_desc" || return $?
 
@@ -571,7 +571,7 @@ d_subtask__pack_into_can()
 
   # Warn user of next passphrase prompt
   # (Optionally take description from caller)
-  local prompt_desc="$( dtrim -- "$1" )"; shift
+  local prompt_desc="$1"; shift
   [ -n "$prompt_desc" ] || prompt_desc='can file passphrase (new)'
   next_up "$prompt_desc" || return $?
 
@@ -601,7 +601,7 @@ d_subtask__pack_into_can()
 next_up()
 {
   # Extract message from arguments and trim it
-  local msg="$( dtrim -- "$*" )"
+  local msg="$*"
 
   # Early exit for empty message
   [ -n "$msg" ] || return 1
