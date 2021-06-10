@@ -513,7 +513,7 @@ d_subtask__pack_into_can()
       "$D_SSH_CAN_LOCATION"
 
     # Prompt user
-    dprompt 'Overwrite?' || {
+    d__prompt -p 'Overwrite?' || {
       printf >&2 '\n%s %s\n' \
         "${BOLD}${WHITE}==>${NORMAL}" \
         "Aborting task"
